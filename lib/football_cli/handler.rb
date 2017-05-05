@@ -1,16 +1,15 @@
 require 'football_cli'
 require 'terminal-table'
+require 'football_data'
 
 module FootballCli
   class Handler
-    include FootballCli::Client
-
     def initialize
       @rows = []
     end
 
     def league_table(league, match_day)
-      response = get_league_table(league, match_day)
+      response = client.league_table(league, match_day: match_day)
 
       response[:standing].each do |team|
         @rows.push([ team[:position], team[:teamName], team[:playedGames], team[:goalDifference], team[:points] ] )
@@ -24,13 +23,13 @@ module FootballCli
     end
 
     def team_players(team)
-      response = get_team_players(team)
+      response = client.team_players(team)
 
-      response[:players].each do |team|
-        @rows.push([ team[:jerseyNumber], team[:name], team[:position], team[:nationality], team[:dateOfBirth] ] )
+      response[:players].each do |item|
+        @rows.push([ item[:jerseyNumber], item[:name], item[:position], item[:nationality], item[:dateOfBirth] ] )
       end
 
-      team_response = get_team(team)
+      team_response = client.team(team)
 
       output(
         title: "#{team_response[:name]} players. Total #{response[:count]}",
@@ -40,7 +39,7 @@ module FootballCli
     end
 
     def team_fixtures(team)
-      response = get_team_fixtures(team)
+      response = client.team_fixtures(team)
 
       response[:fixtures].each do |fixture|
         result = fixture[:result]
@@ -55,7 +54,7 @@ module FootballCli
         ])
       end
 
-      team_response = get_team(team)
+      team_response = client.team(team)
 
       output(
         title: "#{team_response[:name]} fixtures. Total #{response[:count]}",
@@ -66,16 +65,20 @@ module FootballCli
 
     private
 
-    def output(opts = {})
-      table.title = opts[:leagueCaption]
-      table.headings = opts[:headings]
-      table.rows = opts[:rows]
+    def output(opts={})
+      raise 'Please specify options: `leagueCaption, headings, rows`' if opts.none?
+
+      table = Terminal::Table.new do |t|
+        t.title = opts[:leagueCaption]
+        t.headings = opts[:headings]
+        t.rows = opts[:rows]
+      end
 
       puts table
     end
 
-    def table
-      @table ||= Terminal::Table.new
+    def client
+      @client ||= FootballData::Client.new
     end
   end
 end

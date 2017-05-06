@@ -1,6 +1,6 @@
 require 'football_cli'
-require 'terminal-table'
 require 'football_data'
+require 'terminal-table'
 
 module FootballCli
   class Handler
@@ -63,13 +63,33 @@ module FootballCli
       )
     end
 
+    def live_scores
+      response = client.live_scores
+
+      response[:games].each do |game|
+        @rows.push([
+          game[:league],
+          game[:homeTeamName],
+          "#{game[:goalsHomeTeam]} - #{game[:goalsAwayTeam]}",
+          game[:awayTeamName],
+          game[:time]
+        ])
+      end
+
+      output(
+        title: 'Live scores',
+        headings: ['CHAMPIONSHIP', 'HOME TEAM', 'SCORE', 'AWAY TEAM', 'TIME'],
+        rows: @rows
+      )
+    end
+
     private
 
     def output(opts={})
       raise 'Please specify options: `leagueCaption, headings, rows`' if opts.none?
 
       table = Terminal::Table.new do |t|
-        t.title = opts[:leagueCaption]
+        t.title = opts[:title]
         t.headings = opts[:headings]
         t.rows = opts[:rows]
       end

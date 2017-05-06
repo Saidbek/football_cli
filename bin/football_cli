@@ -14,24 +14,32 @@ arguments :strict
 command :show do |c|
   c.desc 'Specify league code'
   c.flag [:l, :league]
+
   c.desc 'Specify match day'
   c.flag [:md, :match_day]
 
   c.desc 'Specify team code'
   c.flag [:t, :team]
+
   c.switch [:p, :players]
   c.switch [:f, :fixtures]
 
   c.action do |global_options, options, args|
+    league = options[:league]
+    match_day = options[:match_day]
+    players = options[:players]
+    fixtures = options[:fixtures]
+    team = options[:team]
+
     case
-    when options[:league], options[:match_day]
-      @handler.league_table(options[:league], options[:match_day])
-    when options[:team] && options[:players], options[:fixtures]
-      if options[:players]
-        @handler.team_players(options[:team])
-      elsif options[:fixtures]
-        @handler.team_fixtures(options[:team])
-      end if options[:team]
+    when league, match_day
+      @handler.league_table(league, match_day)
+    when team && players, fixtures
+      if players
+        @handler.team_players(team)
+      elsif fixtures
+        @handler.team_fixtures(team)
+      end
     else
       puts 'Please run help to see available flags and switches'
     end
@@ -41,6 +49,7 @@ end
 desc 'Display live score'
 command :live do |c|
   c.action do |global_options,options,args|
+    @handler.live_scores
   end
 end
 

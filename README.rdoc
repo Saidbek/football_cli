@@ -5,6 +5,8 @@ Implemented:
     436 - Primera Division 2016/17
     81 - Barcelona
 
+    - bundle exec bin/football_cli live
+
     - bundle exec bin/football_cli show --league=436 --format=table # default
 
     - bundle exec bin/football_cli show --league=436

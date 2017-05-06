@@ -46,7 +46,7 @@ command :show do |c|
   end
 end
 
-desc 'Display live score'
+desc 'Display live scores'
 command :live do |c|
   c.action do |global_options,options,args|
     @handler.live_scores

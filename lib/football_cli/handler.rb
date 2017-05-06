@@ -1,6 +1,7 @@
 require 'football_cli'
 require 'football_data'
 require 'terminal-table'
+require 'json'
 
 module FootballCli
   class Handler
@@ -8,8 +9,8 @@ module FootballCli
       @rows = []
     end
 
-    def league_table(league, match_day)
-      response = client.league_table(league, match_day: match_day)
+    def league_table(code, match_day)
+      response = client.league_table(map_league_id(code), match_day: match_day)
 
       response[:standing].each do |team|
         @rows.push([ team[:position], team[:teamName], team[:playedGames], team[:goalDifference], team[:points] ] )
@@ -22,14 +23,14 @@ module FootballCli
       )
     end
 
-    def team_players(team)
-      response = client.team_players(team)
+    def team_players(code)
+      response = client.team_players(map_team_id(code))
 
       response[:players].each do |item|
         @rows.push([ item[:jerseyNumber], item[:name], item[:position], item[:nationality], item[:dateOfBirth] ] )
       end
 
-      team_response = client.team(team)
+      team_response = client.team(map_team_id(code))
 
       output(
         title: "#{team_response[:name]} players. Total #{response[:count]}",
@@ -38,8 +39,8 @@ module FootballCli
       )
     end
 
-    def team_fixtures(team)
-      response = client.team_fixtures(team)
+    def team_fixtures(code)
+      response = client.team_fixtures(map_team_id(code))
 
       response[:fixtures].each do |fixture|
         result = fixture[:result]
@@ -54,7 +55,7 @@ module FootballCli
         ])
       end
 
-      team_response = client.team(team)
+      team_response = client.team(map_team_id(code))
 
       output(
         title: "#{team_response[:name]} fixtures. Total #{response[:count]}",
@@ -95,6 +96,34 @@ module FootballCli
       end
 
       puts table
+    end
+
+    def map_league_id(code)
+      if league = leagues_list.find {|f| f[:league] == code}
+        league[:id]
+      else
+        raise 'No league found'
+      end
+    end
+
+    def map_team_id(code)
+      if team = teams_list.find {|f| f[:code] == code}
+        team[:id]
+      else
+        raise 'No team found'
+      end
+    end
+
+    def leagues_list
+      path = File.expand_path('../../../config/leagues.json', __FILE__)
+
+      JSON.parse(File.read(path), symbolize_names: true)
+    end
+
+    def teams_list
+      path = File.expand_path('../../../config/teams.json', __FILE__)
+
+      JSON.parse(File.read(path), symbolize_names: true)
     end
 
     def client

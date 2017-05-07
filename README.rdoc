@@ -17,4 +17,6 @@ Todo:
         - bundle exec bin/football_cli show --league=PL --format=json
 
     - Highlight CL EP RL
+    - Improve error handling
+    - Fix and add features
 

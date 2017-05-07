@@ -1,10 +1,13 @@
 require 'football_cli'
 require 'football_data'
 require 'terminal-table'
-require 'json'
+
+require_relative 'mapper'
 
 module FootballCli
   class Handler
+    include FootballCli::Mapper
+
     def initialize
       @rows = []
     end
@@ -96,34 +99,6 @@ module FootballCli
       end
 
       puts table
-    end
-
-    def map_league_id(code)
-      if league = leagues_list.find {|f| f[:league] == code}
-        league[:id]
-      else
-        raise 'No league found'
-      end
-    end
-
-    def map_team_id(code)
-      if team = teams_list.find {|f| f[:code] == code}
-        team[:id]
-      else
-        raise 'No team found'
-      end
-    end
-
-    def leagues_list
-      path = File.expand_path('../../../config/leagues.json', __FILE__)
-
-      JSON.parse(File.read(path), symbolize_names: true)
-    end
-
-    def teams_list
-      path = File.expand_path('../../../config/teams.json', __FILE__)
-
-      JSON.parse(File.read(path), symbolize_names: true)
     end
 
     def client

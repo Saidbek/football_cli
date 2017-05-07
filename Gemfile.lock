@@ -3,7 +3,6 @@ PATH
   specs:
     football_cli (0.0.1)
       gli (= 2.16.0)
-      terminal-table
 
 PATH
   remote: /Users/said.kaldybaev/gems/football_data
@@ -59,6 +58,7 @@ DEPENDENCIES
   football_cli!
   football_data!
   rake
+  terminal-table
 
 BUNDLED WITH
    1.14.6

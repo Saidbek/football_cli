@@ -9,7 +9,7 @@ module FootballCli
     end
 
     def map_team_id(code)
-      team = parse_json(teams_path).find {|team| code == team[:id]} || {}
+      team = parse_json(teams_path).find {|team| code == team[:code]} || {}
 
       team.dig(:id)
     end

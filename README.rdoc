@@ -2,24 +2,19 @@
 
 Implemented:
 
-    436 - Primera Division 2016/17
-    81 - Barcelona
+    bundle exec bin/football_cli live
 
-    - bundle exec bin/football_cli live
+    bundle exec bin/football_cli show --league=PL
+    bundle exec bin/football_cli show --league=PL --match_day=1
 
-    - bundle exec bin/football_cli show --league=436 --format=table # default
+    bundle exec bin/football_cli show --team=FCB --players
+    bundle exec bin/football_cli show --team=FCB --fixtures
 
-    - bundle exec bin/football_cli show --league=436
-    - bundle exec bin/football_cli show --league=436 --match_day=1
-
-    - bundle exec bin/football_cli show --team=81 --players
-    - bundle exec bin/football_cli show --team=81 --fixtures
-
+    Add mapping id with club names
 Todo:
     - Add format (csv/json) support for all resources:
-        - bundle exec bin/football_cli show --league=436 --format=csv
-        - bundle exec bin/football_cli show --league=436 --format=json
+        - bundle exec bin/football_cli show --league=PL --format=csv
+        - bundle exec bin/football_cli show --league=PL --format=json
 
-    - Add mapping id with club names
-    - Highlight CL EP and bottom teams
+    - Highlight CL EP RL
 

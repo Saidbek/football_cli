@@ -18,6 +18,7 @@ Implemented:
         bundle exec bin/football_cli show --team=FCB --fixtures --format=table
 Todo:
     - Add more format types (json, csv)
+    - Make api_token configurable
     - Highlight CL EP RL
     - Improve error handling
     - Fix and add features

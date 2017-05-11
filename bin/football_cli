@@ -11,6 +11,7 @@ version FootballCli::VERSION
 subcommand_option_handling :normal
 arguments :strict
 
+desc 'Show leagues, team players, fixtures and more'
 command :show do |c|
   c.desc 'Specify league code'
   c.flag [:l, :league]

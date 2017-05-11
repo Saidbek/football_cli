@@ -25,7 +25,7 @@ module FootballCli
 
     def run
       case
-      when league, match_day, format
+      when league, match_day
         league_table
       when team && players, fixtures
         if players

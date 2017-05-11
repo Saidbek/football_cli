@@ -11,11 +11,13 @@ Implemented:
     bundle exec bin/football_cli show --team=FCB --fixtures
 
     Add mapping id with club names
-Todo:
-    - Add format (csv/json) support for all resources:
-        - bundle exec bin/football_cli show --league=PL --format=csv
-        - bundle exec bin/football_cli show --league=PL --format=json
 
+    Added format (table) support for all resources:
+        bundle exec bin/football_cli show --league=PL --format=table
+        bundle exec bin/football_cli show --team=FCB --players --format=table
+        bundle exec bin/football_cli show --team=FCB --fixtures --format=table
+Todo:
+    - Add more format types (json, csv)
     - Highlight CL EP RL
     - Improve error handling
     - Fix and add features

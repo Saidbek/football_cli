@@ -2,7 +2,7 @@ module FootballCli
   module Format
     class CSV < Base
       def output
-        # TODO implement
+        puts 'not implemented yet'
       end
     end
   end

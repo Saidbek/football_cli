@@ -21,28 +21,14 @@ command :show do |c|
   c.desc 'Specify team code'
   c.flag [:t, :team]
 
+  c.desc 'Specify format'
+  c.flag [:ft, :format]
+
   c.switch [:p, :players]
-  c.switch [:f, :fixtures]
+  c.switch [:fs, :fixtures]
 
   c.action do |global_options, options, args|
-    league = options[:league]
-    match_day = options[:match_day]
-    players = options[:players]
-    fixtures = options[:fixtures]
-    team = options[:team]
-
-    case
-    when league, match_day
-      @handler.league_table(league, match_day)
-    when team && players, fixtures
-      if players
-        @handler.team_players(team)
-      elsif fixtures
-        @handler.team_fixtures(team)
-      end
-    else
-      puts 'Please run help to see available flags and switches'
-    end
+    @handler.run
   end
 end
 
@@ -54,7 +40,7 @@ command :live do |c|
 end
 
 pre do |global,command,options,args|
-  @handler ||= FootballCli::Handler.new
+  @handler = FootballCli::Handler.new(options)
 end
 
 post do |global,command,options,args|

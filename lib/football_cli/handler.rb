@@ -3,106 +3,135 @@ require 'football_data'
 require 'terminal-table'
 
 require_relative 'mapper'
+require_relative 'format/base'
+require_relative 'format/table'
+require_relative 'format/csv'
+require_relative 'format/json'
 
 module FootballCli
   class Handler
     include FootballCli::Mapper
 
-    def initialize
-      @rows = []
+    def initialize(options={})
+      @league = options[:league]
+      @match_day = options[:match_day]
+      @players = options[:players]
+      @fixtures = options[:fixtures]
+      @team = options[:team]
+      @format = options[:format] || 'table'
+
+      @client = FootballData::Client.new
     end
 
-    def league_table(code, match_day)
-      response = client.league_table(map_league_id(code), match_day: match_day)
-
-      response[:standing].each do |team|
-        @rows.push([ team[:position], team[:teamName], team[:playedGames], team[:goalDifference], team[:points] ] )
+    def run
+      case
+      when league, match_day, format
+        league_table
+      when team && players, fixtures
+        if players
+          team_players
+        elsif fixtures
+          team_fixtures
+        end
+      else
+        puts 'Please run help to see available `flags` and `switches`'
       end
+    end
 
-      output(
+    def league_table
+      response = client.league_table(map_league_id(league), match_day: match_day)
+
+      attrs = {
+        pos: 'position',
+        club: 'teamName',
+        played: 'playedGames',
+        goal_diff: 'goalDifference',
+        points: 'points'
+      }
+
+      print_output(
         title: response[:leagueCaption],
-        headings: ['POS', 'CLUB', 'PLAYED', 'GOAL DIFF', 'POINTS'],
-        rows: @rows
+        response: response[:standing],
+        attrs: attrs
       )
     end
 
-    def team_players(code)
-      response = client.team_players(map_team_id(code))
+    def team_players
+      response = client.team_players(map_team_id(team))
+      team_response = client.team(map_team_id(team))
 
-      response[:players].each do |item|
-        @rows.push([ item[:jerseyNumber], item[:name], item[:position], item[:nationality], item[:dateOfBirth] ] )
-      end
+      attrs = {
+        number: 'jerseyNumber',
+        name: 'name',
+        position: 'position',
+        nationality: 'nationality',
+        date_of_birth: 'dateOfBirth'
+      }
 
-      team_response = client.team(map_team_id(code))
-
-      output(
+      print_output(
         title: "#{team_response[:name]} players. Total #{response[:count]}",
-        headings: ['NUMBER', 'NAME', 'POSITION', 'NATIONALITY', 'DATE OF BIRTH'],
-        rows: @rows
+        response: response[:players],
+        attrs: attrs
       )
     end
 
-    def team_fixtures(code)
-      response = client.team_fixtures(map_team_id(code))
+    def team_fixtures
+      response = client.team_fixtures(map_team_id(team))
+      team_response = client.team(map_team_id(team))
 
-      response[:fixtures].each do |fixture|
-        result = fixture[:result]
+      attrs = {
+        match_day: 'matchday',
+        home_team: 'homeTeamName',
+        score: {
+          result: %w(goalsHomeTeam goalsAwayTeam)
+        },
+        away_team: 'awayTeamName',
+        status: 'status',
+        date: 'date'
+      }
 
-        @rows.push([
-          fixture[:matchday],
-          fixture[:homeTeamName],
-          "#{result.dig(:goalsHomeTeam)} - #{result.dig(:goalsAwayTeam)}",
-          fixture[:awayTeamName],
-          fixture[:status],
-          fixture[:date]
-        ])
-      end
-
-      team_response = client.team(map_team_id(code))
-
-      output(
-        title: "#{team_response[:name]} fixtures. Total #{response[:count]}",
-        headings: ['MATCH DAY', 'HOME TEAM', 'SCORE', 'AWAY TEAM', 'STATUS', 'DATE'],
-        rows: @rows
+      print_output(
+        title: "#{team_response[:name]} players. Total #{response[:count]}",
+        response: response[:fixtures],
+        attrs: attrs
       )
     end
 
     def live_scores
       response = client.live_scores
 
-      response[:games].each do |game|
-        @rows.push([
-          game[:league],
-          game[:homeTeamName],
-          "#{game[:goalsHomeTeam]} - #{game[:goalsAwayTeam]}",
-          game[:awayTeamName],
-          game[:time]
-        ])
-      end
+      attrs = {
+        championship: 'league',
+        home_team: 'homeTeamName',
+        score: {
+          result: %w(goalsHomeTeam goalsAwayTeam)
+        },
+        away_team: 'awayTeamName',
+        time: 'time'
+      }
 
-      output(
+      print_output(
         title: 'Live scores',
-        headings: ['CHAMPIONSHIP', 'HOME TEAM', 'SCORE', 'AWAY TEAM', 'TIME'],
-        rows: @rows
+        response: response[:games],
+        attrs: attrs
       )
     end
 
     private
 
-    def output(opts={})
-      raise 'Please specify options: `leagueCaption, headings, rows`' if opts.none?
+    attr_reader :client, :league, :match_day, :players, :fixtures, :team, :format
 
-      table = Terminal::Table.new do |t|
-        t.title = opts[:title]
-        t.headings = opts[:headings]
-        t.rows = opts[:rows]
+    def print_output(title:, response:, attrs:)
+      case format
+      when 'table'
+        FootballCli::Format::Table.new(title, response, attrs).output
+      when 'json'
+        FootballCli::Format::JSON.new(title, response, attrs).output
+      when 'csv'
+        FootballCli::Format::CSV.new(title, response, attrs).output
+      else
+        puts 'Invalid format type. Available options (table, json, csv)'
       end
-
-      puts table
-    end
-
-    def client
-      @client ||= FootballData::Client.new
     end
   end
 end

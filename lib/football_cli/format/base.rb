@@ -16,7 +16,7 @@ module FootballCli
       end
 
       def goal_columns
-        %i(goalsHomeTeam goalsAwayTeam)
+        %i(goalsHomeTeam goalsAwayTeam).freeze
       end
     end
   end

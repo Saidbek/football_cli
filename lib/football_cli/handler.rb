@@ -9,7 +9,8 @@ module FootballCli
   class Handler
     include FootballCli::Mapper
 
-    def initialize(options={})
+    def initialize(command, options={})
+      @command = command.name
       @league = options[:league]
       @match_day = options[:match_day]
       @players = options[:players]
@@ -21,17 +22,24 @@ module FootballCli
     end
 
     def run
-      case
-      when league, match_day
-        league_table
-      when team && players, fixtures
-        if players
-          team_players
-        elsif fixtures
-          team_fixtures
+      case command
+      when :live
+        live_scores
+      when :show
+        case
+        when league, match_day
+          league_table
+        when team && players, fixtures
+          if players
+            team_players
+          elsif fixtures
+            team_fixtures
+          end
+        else
+          raise 'Invalid option'
         end
       else
-        puts 'Please run help to see available `flags` and `switches`'
+        raise 'Invalid command'
       end
     end
 
@@ -79,7 +87,7 @@ module FootballCli
 
     private
 
-    attr_reader :client, :league, :match_day, :players, :fixtures, :team, :format
+    attr_reader :client, :command, :league, :match_day, :players, :fixtures, :team, :format
 
     def print_output(response:, title:, columns:)
       factory = FootballCli::Format::FormatFactory.build(format, { response: response, title: title, columns: columns })

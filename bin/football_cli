@@ -36,12 +36,12 @@ end
 desc 'Display live scores'
 command :live do |c|
   c.action do |global_options,options,args|
-    @handler.live_scores
+    @handler.run
   end
 end
 
 pre do |global,command,options,args|
-  @handler = FootballCli::Handler.new(options)
+  @handler = FootballCli::Handler.new(command, options)
 end
 
 post do |global,command,options,args|

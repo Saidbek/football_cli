@@ -10,13 +10,13 @@ module FootballCli
     include FootballCli::Mapper
 
     def initialize(command, options={})
-      @command = command.name
+      @command = command
       @league = options[:league]
       @match_day = options[:match_day]
       @players = options[:players]
       @fixtures = options[:fixtures]
       @team = options[:team]
-      @format = options.fetch(:format, 'table')
+      @format = options[:format] || 'table'
 
       @client = FootballData::Client.new
     end

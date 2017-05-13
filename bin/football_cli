@@ -41,7 +41,7 @@ command :live do |c|
 end
 
 pre do |global,command,options,args|
-  @handler = FootballCli::Handler.new(command, options)
+  @handler = FootballCli::Handler.new(command.name, options)
 end
 
 post do |global,command,options,args|

@@ -25,6 +25,9 @@ command :show do |c|
   c.desc 'Specify format'
   c.flag [:ft, :format]
 
+  c.desc 'Specify file name to save output'
+  c.flag [:fl, :file]
+
   c.switch [:p, :players]
   c.switch [:fs, :fixtures]
 
@@ -53,7 +56,7 @@ end
 on_error do |exception|
   # Error logic here
   # return false to skip default error handling
-  puts "----- errors: #{exception.backtrace}"
+  puts "----- backtrace: #{exception.backtrace}"
   true
 end
 

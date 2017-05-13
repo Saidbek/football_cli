@@ -4,8 +4,8 @@ require_relative 'base'
 module FootballCli
   module Format
     class Csv < Base
-      def output
-        csv_string = CSV.generate do |csv|
+      def generate
+        @generate ||= CSV.generate do |csv|
           csv << columns
 
           response.each do |data|
@@ -18,8 +18,12 @@ module FootballCli
             }
           end
         end
+      end
 
-        puts csv_string
+      def output
+        puts generate
+
+        write_to_file(generate)
       end
     end
   end

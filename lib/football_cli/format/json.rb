@@ -4,7 +4,7 @@ require_relative 'base'
 module FootballCli
   module Format
     class Json < Base
-      def output
+      def generate
         response.each do |data|
           rows.push(
             Hash[columns.collect {|c|
@@ -17,7 +17,13 @@ module FootballCli
           )
         end
 
-        puts JSON.pretty_generate(rows)
+        @generate ||= JSON.pretty_generate(rows)
+      end
+
+      def output
+        puts generate
+
+        write_to_file(generate)
       end
     end
   end

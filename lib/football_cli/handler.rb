@@ -17,6 +17,7 @@ module FootballCli
       @fixtures = options[:fixtures]
       @team = options[:team]
       @format = options[:format] || 'table'
+      @file = options[:file]
 
       @client = FootballRuby::Client.new
     end
@@ -87,10 +88,18 @@ module FootballCli
 
     private
 
-    attr_reader :client, :command, :league, :match_day, :players, :fixtures, :team, :format
+    attr_reader :client, :command, :league, :match_day, :players, :fixtures, :team, :format, :file
 
     def print_output(response:, title:, columns:)
-      factory = FootballCli::Format::FormatFactory.build(format, { response: response, title: title, columns: columns })
+      factory = FootballCli::Format::FormatFactory.build(
+        format,
+        {
+          response: response,
+          title: title,
+          columns: columns,
+          file_name: file
+        }
+      )
 
       factory.output
     end

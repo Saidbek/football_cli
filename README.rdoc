@@ -5,13 +5,15 @@ Implemented:
     bundle exec bin/football_cli live
 
     bundle exec bin/football_cli show --league=PL
-    bundle exec bin/football_cli show --league=PL --match_day=1
     bundle exec bin/football_cli show --league=PL --match_day=1 --format=json
 
     bundle exec bin/football_cli show --team=FCB --players
+    bundle exec bin/football_cli show --team=FCB --players --format=csv --file=players.csv
     bundle exec bin/football_cli show --team=FCB --players --format=json
-    bundle exec bin/football_cli show --team=FCB --fixtures
+    bundle exec bin/football_cli show --team=FCB --fixtures --file=team.txt
     bundle exec bin/football_cli show --team=FCB --fixtures --format=csv
+
+    By default format=table
 Todo:
     - Make api_token configurable
     - Highlight CL EP RL

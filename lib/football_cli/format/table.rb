@@ -3,7 +3,7 @@ require_relative 'base'
 module FootballCli
   module Format
     class Table < Base
-      def output
+      def generate
         response.each do |data|
           rows.push(
             columns.collect {|c|
@@ -16,13 +16,17 @@ module FootballCli
           )
         end
 
-        table = Terminal::Table.new do |t|
+        @generate ||= Terminal::Table.new do |t|
           t.title = title
           t.headings = columns.map(&:capitalize)
           t.rows = rows
         end
+      end
 
-        puts table
+      def output
+        puts generate
+
+        write_to_file(generate)
       end
     end
   end

@@ -1,18 +1,22 @@
 module FootballCli
   module Format
     class Base
-      attr_reader :title, :response, :attrs, :rows
+      attr_reader :title, :response, :columns, :rows
 
-      def initialize(title, response, attrs)
-        @title = title
+      def initialize(response, opts={})
         @response = response
-        @attrs = attrs
+        @title = opts[:title]
+        @columns = opts[:columns]
 
         @rows = []
       end
 
       def output
-        raise 'must implement method: output'
+        raise NotImplementedError, 'Sorry, you have to override output'
+      end
+
+      def goal_columns
+        %i(goalsHomeTeam goalsAwayTeam)
       end
     end
   end

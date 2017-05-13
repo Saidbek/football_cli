@@ -1,8 +1,22 @@
+require 'json'
+
 module FootballCli
   module Format
-    class JSON < Base
+    class Json < Base
       def output
-        puts 'not implemented yet'
+        response.each do |data|
+          rows.push(
+            Hash[columns.collect {|c|
+              if goal_columns.include?(c)
+                [c, data[:result][c]]
+              else
+                [c, data[c]]
+              end
+            }]
+          )
+        end
+
+        puts JSON.pretty_generate(rows)
       end
     end
   end

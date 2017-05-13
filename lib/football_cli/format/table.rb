@@ -4,23 +4,19 @@ module FootballCli
       def output
         response.each do |data|
           rows.push(
-            attrs.values.map do |value|
-              if value.is_a?(Hash)
-                if value.include?(:result)
-                  result = data[:result]
-
-                  "#{result[:goalsHomeTeam]} - #{result[:goalsAwayTeam]}"
-                end
+            columns.collect {|c|
+              if goal_columns.include?(c) && data[:result]
+                data[:result][c]
               else
-                data[value.to_sym]
+                data[c]
               end
-            end
+            }
           )
         end
 
         table = Terminal::Table.new do |t|
           t.title = title
-          t.headings = attrs.keys.map(&:upcase)
+          t.headings = columns.map(&:capitalize)
           t.rows = rows
         end
 

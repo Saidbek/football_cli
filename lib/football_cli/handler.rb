@@ -41,18 +41,10 @@ module FootballCli
     def league_table
       response = client.league_table(map_league_id(league), match_day: match_day)
 
-      attrs = {
-        pos: 'position',
-        club: 'teamName',
-        played: 'playedGames',
-        goal_diff: 'goalDifference',
-        points: 'points'
-      }
-
       print_output(
         title: response[:leagueCaption],
         response: response[:standing],
-        attrs: attrs
+        columns: %i(position teamName playedGames goalDifference points)
       )
     end
 
@@ -60,18 +52,10 @@ module FootballCli
       response = client.team_players(map_team_id(team))
       team_response = client.team(map_team_id(team))
 
-      attrs = {
-        number: 'jerseyNumber',
-        name: 'name',
-        position: 'position',
-        nationality: 'nationality',
-        date_of_birth: 'dateOfBirth'
-      }
-
       print_output(
         title: "#{team_response[:name]} players. Total #{response[:count]}",
         response: response[:players],
-        attrs: attrs
+        columns: %i(jerseyNumber name position nationality dateOfBirth)
       )
     end
 
@@ -79,41 +63,20 @@ module FootballCli
       response = client.team_fixtures(map_team_id(team))
       team_response = client.team(map_team_id(team))
 
-      attrs = {
-        match_day: 'matchday',
-        home_team: 'homeTeamName',
-        score: {
-          result: %w(goalsHomeTeam goalsAwayTeam)
-        },
-        away_team: 'awayTeamName',
-        status: 'status',
-        date: 'date'
-      }
-
       print_output(
         title: "#{team_response[:name]} players. Total #{response[:count]}",
         response: response[:fixtures],
-        attrs: attrs
+        columns: %i(matchday homeTeamName goalsHomeTeam goalsAwayTeam awayTeamName status date)
       )
     end
 
     def live_scores
       response = client.live_scores
 
-      attrs = {
-        championship: 'league',
-        home_team: 'homeTeamName',
-        score: {
-          result: %w(goalsHomeTeam goalsAwayTeam)
-        },
-        away_team: 'awayTeamName',
-        time: 'time'
-      }
-
       print_output(
         title: 'Live scores',
         response: response[:games],
-        attrs: attrs
+        columns: %i(league homeTeamName goalsHomeTeam goalsAwayTeam awayTeamName time)
       )
     end
 
@@ -121,14 +84,15 @@ module FootballCli
 
     attr_reader :client, :league, :match_day, :players, :fixtures, :team, :format
 
-    def print_output(title:, response:, attrs:)
+    def print_output(response:, title:, columns:)
+      table = FootballCli::Format::Table.new(response, { title: title, columns: columns })
+      json = FootballCli::Format::Json.new(response, { title: title, columns: columns })
+      csv = FootballCli::Format::Csv.new(response, { title: title, columns: columns })
+
       case format
-      when 'table'
-        FootballCli::Format::Table.new(title, response, attrs).output
-      when 'json'
-        FootballCli::Format::JSON.new(title, response, attrs).output
-      when 'csv'
-        FootballCli::Format::CSV.new(title, response, attrs).output
+      when 'table' then table.output
+      when 'json' then json.output
+      when 'csv' then csv.output
       else
         puts 'Invalid format type. Available options (table, json, csv)'
       end

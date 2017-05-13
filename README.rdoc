@@ -6,18 +6,13 @@ Implemented:
 
     bundle exec bin/football_cli show --league=PL
     bundle exec bin/football_cli show --league=PL --match_day=1
+    bundle exec bin/football_cli show --league=PL --match_day=1 --format=json
 
     bundle exec bin/football_cli show --team=FCB --players
+    bundle exec bin/football_cli show --team=FCB --players --format=json
     bundle exec bin/football_cli show --team=FCB --fixtures
-
-    Add mapping id with club names
-
-    Added format (table) support for all resources:
-        bundle exec bin/football_cli show --league=PL --format=table
-        bundle exec bin/football_cli show --team=FCB --players --format=table
-        bundle exec bin/football_cli show --team=FCB --fixtures --format=table
+    bundle exec bin/football_cli show --team=FCB --fixtures --format=csv
 Todo:
-    - Add more format types (json, csv)
     - Make api_token configurable
     - Highlight CL EP RL
     - Improve error handling

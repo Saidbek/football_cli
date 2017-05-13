@@ -1,8 +1,24 @@
+require 'csv'
+
 module FootballCli
   module Format
-    class CSV < Base
+    class Csv < Base
       def output
-        puts 'not implemented yet'
+        csv_string = CSV.generate do |csv|
+          csv << columns
+
+          response.each do |data|
+            csv << columns.collect {|c|
+              if goal_columns.include?(c) && data[:result]
+                data[:result][c]
+              else
+                data[c]
+              end
+            }
+          end
+        end
+
+        puts csv_string
       end
     end
   end

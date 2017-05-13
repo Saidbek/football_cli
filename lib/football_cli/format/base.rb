@@ -3,8 +3,8 @@ module FootballCli
     class Base
       attr_reader :title, :response, :columns, :rows
 
-      def initialize(response, opts={})
-        @response = response
+      def initialize(opts={})
+        @response = opts[:response]
         @title = opts[:title]
         @columns = opts[:columns]
 
@@ -12,7 +12,7 @@ module FootballCli
       end
 
       def output
-        raise NotImplementedError, 'Sorry, you have to override output'
+        raise NotImplementedError, 'must implement output() method in subclass'
       end
 
       def goal_columns

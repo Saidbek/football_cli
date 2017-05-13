@@ -3,10 +3,7 @@ require 'football_data'
 require 'terminal-table'
 
 require_relative 'mapper'
-require_relative 'format/base'
-require_relative 'format/table'
-require_relative 'format/csv'
-require_relative 'format/json'
+require_relative 'format/format_factory'
 
 module FootballCli
   class Handler
@@ -18,7 +15,7 @@ module FootballCli
       @players = options[:players]
       @fixtures = options[:fixtures]
       @team = options[:team]
-      @format = options[:format] || 'table'
+      @format = options.fetch(:format, 'table')
 
       @client = FootballData::Client.new
     end
@@ -85,17 +82,9 @@ module FootballCli
     attr_reader :client, :league, :match_day, :players, :fixtures, :team, :format
 
     def print_output(response:, title:, columns:)
-      table = FootballCli::Format::Table.new(response, { title: title, columns: columns })
-      json = FootballCli::Format::Json.new(response, { title: title, columns: columns })
-      csv = FootballCli::Format::Csv.new(response, { title: title, columns: columns })
+      factory = FootballCli::Format::FormatFactory.build(format, { response: response, title: title, columns: columns })
 
-      case format
-      when 'table' then table.output
-      when 'json' then json.output
-      when 'csv' then csv.output
-      else
-        puts 'Invalid format type. Available options (table, json, csv)'
-      end
+      factory.output
     end
   end
 end

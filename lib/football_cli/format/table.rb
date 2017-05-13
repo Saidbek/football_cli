@@ -1,3 +1,5 @@
+require_relative 'base'
+
 module FootballCli
   module Format
     class Table < Base

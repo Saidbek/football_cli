@@ -1,4 +1,5 @@
 require 'csv'
+require_relative 'base'
 
 module FootballCli
   module Format

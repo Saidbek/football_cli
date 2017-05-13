@@ -2,12 +2,8 @@ PATH
   remote: .
   specs:
     football_cli (0.0.1)
+      football_ruby
       gli (= 2.16.0)
-
-PATH
-  remote: /Users/said.kaldybaev/gems/football_data
-  specs:
-    football_data (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -36,6 +32,7 @@ GEM
     cucumber-wire (0.0.1)
     diff-lcs (1.3)
     ffi (1.9.18)
+    football_ruby (0.1.0)
     gherkin (4.1.1)
     gli (2.16.0)
     multi_json (1.12.1)
@@ -56,7 +53,6 @@ PLATFORMS
 DEPENDENCIES
   aruba
   football_cli!
-  football_data!
   rake
   terminal-table
 

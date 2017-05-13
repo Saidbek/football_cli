@@ -1,5 +1,5 @@
 require 'football_cli'
-require 'football_data'
+require 'football_ruby'
 require 'terminal-table'
 
 require_relative 'mapper'
@@ -18,7 +18,7 @@ module FootballCli
       @team = options[:team]
       @format = options[:format] || 'table'
 
-      @client = FootballData::Client.new
+      @client = FootballRuby::Client.new
     end
 
     def run

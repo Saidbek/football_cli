@@ -1,8 +1,10 @@
-![](http://i.imgur.com/FLITgqs.jpg)
+<p align="center">
+  <img src="http://i.imgur.com/FLITgqs.jpg">
+</p>
 
 # Fottball CLI
 
-A command line interface for all the football data feeds in Ruby Edit
+A command line interface for all the football data feeds in Ruby
 
 ## Installation
 

@@ -1,4 +1,6 @@
-![](http://i.imgur.com/FLITgqs.jpg)
+<p align="center">
+  <img src="http://i.imgur.com/FLITgqs.jpg">
+</p>
 
 # Fottball CLI
 

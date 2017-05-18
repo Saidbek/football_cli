@@ -1,3 +1,4 @@
+require 'rainbow/ext/string'
 require_relative 'base'
 
 module FootballCli
@@ -7,16 +8,16 @@ module FootballCli
         response.each do |data|
           rows.push(
             columns.collect {|c|
-              if goal_columns.include?(c) && data[:result]
+              if goal_columns.include?(c) && data[:result] # when requesting team's fixtures
                 data[:result][c]
               else
-                data[c]
+                pretty_table(data, c)
               end
             }
           )
         end
 
-        @generate ||= Terminal::Table.new do |t|
+        Terminal::Table.new do |t|
           t.title = title
           t.headings = columns.map(&:capitalize)
           t.rows = rows

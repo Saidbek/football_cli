@@ -9,19 +9,34 @@
     "id": 426,
     "caption": "Premier League 2016/17",
     "league": "PL",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 4],
+      "el": [5, 6],
+      "rl": [18, 20]
+    }
   },
   {
     "id": 427,
     "caption": "Championship 2016/17",
     "league": "ELC",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 2],
+      "el": [3, 6],
+      "rl": [22, 24]
+    }
   },
   {
     "id": 428,
     "caption": "League One 2016/17",
     "league": "EL1",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 2],
+      "el": [3, 6],
+      "rl": [21, 24]
+    }
   },
   {
     "id": 429,
@@ -33,13 +48,23 @@
     "id": 430,
     "caption": "1. Bundesliga 2016/17",
     "league": "BL1",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 4],
+      "el": [5, 6],
+      "rl": [17, 18]
+    }
   },
   {
     "id": 431,
     "caption": "2. Bundesliga 2016/17",
     "league": "BL2",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 2],
+      "el": [3, 3],
+      "rl": [16, 18]
+    }
   },
   {
     "id": 432,
@@ -51,43 +76,78 @@
     "id": 433,
     "caption": "Eredivisie 2016/17",
     "league": "DED",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 2],
+      "el": [3, 5],
+      "rl": [16, 18]
+    }
   },
   {
     "id": 434,
     "caption": "Ligue 1 2016/17",
     "league": "FL1",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 3],
+      "el": [4, 5],
+      "rl": [18, 20]
+    }
   },
   {
     "id": 435,
     "caption": "Ligue 2 2016/17",
     "league": "FL2",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 3],
+      "el": [0, 0],
+      "rl": [18, 20]
+    }
   },
   {
     "id": 436,
     "caption": "Primera Division 2016/17",
     "league": "PD",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 4],
+      "el": [5, 6],
+      "rl": [18, 20]
+    }
   },
   {
     "id": 437,
     "caption": "Liga Adelante 2016/17",
     "league": "SD",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 2],
+      "el": [3, 6],
+      "rl": [19, 22]
+    }
   },
   {
     "id": 438,
     "caption": "Serie A 2016/17",
     "league": "SA",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 3],
+      "el": [4, 5],
+      "rl": [18, 20]
+    }
   },
   {
     "id": 439,
     "caption": "Primeira Liga 2016/17",
     "league": "PPL",
-    "year": "2016"
+    "year": "2016",
+    "qualification": {
+      "cl": [1, 3],
+      "el": [4, 5],
+      "rl": [15, 18]
+    }
   },
   {
     "id": 440,

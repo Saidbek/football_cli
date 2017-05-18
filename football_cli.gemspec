@@ -14,7 +14,8 @@ Gem::Specification.new do |s|
   s.bindir = 'bin'
   s.executables << 'football_cli'
 
-  s.add_dependency 'football_ruby'
+  s.add_dependency('football_ruby')
+  s.add_dependency('rainbow')
   s.add_development_dependency('rake')
   s.add_development_dependency('aruba')
   s.add_development_dependency('terminal-table')

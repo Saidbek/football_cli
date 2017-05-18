@@ -14,9 +14,9 @@ Implemented:
     bundle exec bin/football_cli show --team=FCB --fixtures --format=csv
 
     By default format=table
+    Highlight qualified teams (CL EP RL)
 Todo:
     - Make api_token configurable
-    - Highlight CL EP RL
     - Improve error handling
     - Fix and add features
 

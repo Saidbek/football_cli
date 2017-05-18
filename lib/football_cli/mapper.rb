@@ -2,16 +2,30 @@ require 'json'
 
 module FootballCli
   module Mapper
-    def map_league_id(code)
-      league = parse_json(leagues_path).find {|league| code == league[:league]} || {}
-
-      league.dig(:id)
+    def get_league_id(code)
+      league_info(code).dig(:id)
     end
 
-    def map_team_id(code)
-      team = parse_json(teams_path).find {|team| code == team[:code]} || {}
+    def get_team_id(code)
+      team_info(code).dig(:id)
+    end
 
-      team.dig(:id)
+    def get_qualification(code)
+      league_info(code).dig(:qualification)
+    end
+
+    private
+
+    def league_info(code)
+      @league_info ||= parse_json(leagues_path).find {|league| code == league[:league]} || {}
+    end
+
+    def team_info(code)
+      @team_info ||= parse_json(teams_path).find {|team| code == team[:code]} || {}
+    end
+
+    def parse_json(path)
+      @parse_json ||= JSON.parse(File.read(path), symbolize_names: true)
     end
 
     def leagues_path
@@ -20,12 +34,6 @@ module FootballCli
 
     def teams_path
       File.join 'config', 'teams.json'
-    end
-
-    def parse_json(path)
-      file = File.read(path)
-
-      JSON.parse(file, symbolize_names: true)
     end
   end
 end

@@ -29,11 +29,15 @@ module FootballCli
     end
 
     def leagues_path
-      File.join 'config', 'leagues.json'
+      File.join root, 'config', 'leagues.json'
     end
 
     def teams_path
-      File.join 'config', 'teams.json'
+      File.join root, 'config', 'teams.json'
+    end
+
+    def root
+      File.expand_path '../../../', __FILE__
     end
   end
 end

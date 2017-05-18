@@ -2,7 +2,7 @@
 
 # Fottball CLI
 
-A command line interface for all the football data feeds in Ruby Edit
+A command line interface for all the football data feeds in Ruby
 
 ## Installation
 

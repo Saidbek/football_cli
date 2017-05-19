@@ -1,7 +1,7 @@
 module FootballCli
   module Format
     class Base
-      attr_reader :title, :response, :columns, :rows, :file_name
+      attr_reader :title, :response, :columns, :rows
 
       def initialize(opts={})
         @response = opts[:response]
@@ -18,31 +18,15 @@ module FootballCli
       end
 
       def output
-        raise NotImplementedError, 'must implement output() method in subclass'
-      end
-
-      def write_to_file(output)
-        File.write(file_name, output) if file_name
+        if @file_name
+          File.write(@file_name, generate)
+        else
+          puts generate
+        end
       end
 
       def goal_columns
         %i(goalsHomeTeam goalsAwayTeam).freeze
-      end
-
-      def pretty_table(data, column)
-        if qualification
-          color = case data[:position]
-                  when qualification[:cl] then :green
-                  when qualification[:el] then :yellow
-                  when qualification[:rl] then :red
-                  else
-                    :aqua
-                  end
-
-          data[column].to_s.color(color)
-        else
-          data[column]
-        end
       end
 
       def qualification

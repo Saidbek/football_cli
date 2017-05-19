@@ -19,12 +19,6 @@ module FootballCli
           end
         end
       end
-
-      def output
-        puts generate
-
-        write_to_file(generate)
-      end
     end
   end
 end

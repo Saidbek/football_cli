@@ -8,7 +8,7 @@ A command line interface for all the football data feeds in Ruby
 
 ## Installation
 
-    $ gem install football_ruby
+    $ gem install football_cli
 
 ## Usage
 

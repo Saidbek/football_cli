@@ -4,7 +4,7 @@ Feature: Football data feeds
   So I don't have to spend my time and open browser
 
   Scenario: Get Help
-    When I run `bundle exec football_cli help`
+    When I run `football_cli help`
     Then the output should contain:
       """
       NAME
@@ -26,7 +26,7 @@ Feature: Football data feeds
           show - Show leagues, team players, fixtures and more
       """
   Scenario: Get live scores
-    When I run `bundle exec football_cli live`
+    When I run `football_cli live`
     Then the output should contain:
       """
       yeah

@@ -1,2 +1,2 @@
-require 'football_cli/handler'
 require 'football_cli/version'
+require 'football_cli/cli'

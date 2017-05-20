@@ -9,43 +9,32 @@ module FootballCli
   class Handler
     include FootballCli::Mapper
 
-    def initialize(command, options={})
-      @command = command
+    def initialize(options={})
       @league = options[:league]
       @match_day = options[:match_day]
       @players = options[:players]
       @fixtures = options[:fixtures]
       @team = options[:team]
-      @format = options[:format] || 'table'
       @file = options[:file]
+      @format = options.fetch(:format, 'table')
     end
 
     def run
-      case command
-      when :live
-        live_scores
-      when :show
-        case
-        when league, match_day
-          league_table
-        when team && players, fixtures
-          if players
-            team_players
-          elsif fixtures
-            team_fixtures
-          end
-        else
-          raise 'Invalid option'
+      if league
+        league_table
+      elsif team
+        if players
+          team_players
+        elsif fixtures
+          team_fixtures
         end
-      else
-        raise 'Invalid command'
       end
     end
 
     def league_table
       response = client.league_table(league_id, match_day: match_day)
 
-      display(
+      output(
         title: response[:leagueCaption],
         response: response[:standing],
         columns: %i(position teamName playedGames goalDifference points),
@@ -57,7 +46,7 @@ module FootballCli
       response = client.team_players(team_id)
       team_response = client.team(team_id)
 
-      display(
+      output(
         title: "#{team_response[:name]} players. Total #{response[:count]}",
         response: response[:players],
         columns: %i(jerseyNumber name position nationality dateOfBirth)
@@ -68,7 +57,7 @@ module FootballCli
       response = client.team_fixtures(team_id)
       team_response = client.team(team_id)
 
-      display(
+      output(
         title: "#{team_response[:name]} players. Total #{response[:count]}",
         response: response[:fixtures],
         columns: %i(matchday homeTeamName goalsHomeTeam goalsAwayTeam awayTeamName status date)
@@ -78,7 +67,7 @@ module FootballCli
     def live_scores
       response = client.live_scores
 
-      display(
+      output(
         title: 'Live scores',
         response: response[:games],
         columns: %i(league homeTeamName goalsHomeTeam goalsAwayTeam awayTeamName time)
@@ -101,24 +90,17 @@ module FootballCli
       get_qualification(league)
     end
 
-    def display(opts = {})
-      response = opts[:response]
-      title = opts[:title]
-      columns = opts[:columns]
-      qualification = opts[:qualification]
-
-      factory = FootballCli::Format::FormatFactory.build(
+    def output(opts = {})
+      FootballCli::Format::FormatFactory.build(
         format,
         {
-          response: response,
-          title: title,
-          columns: columns,
-          file_name: file,
-          qualification: qualification
+          qualification: opts[:qualification],
+          response: opts[:response],
+          columns: opts[:columns],
+          title: opts[:title],
+          file_name: file
         }
-      )
-
-      factory.output
+      ).output
     end
 
     def client

@@ -3,8 +3,8 @@ PATH
   specs:
     football_cli (0.0.5)
       football_ruby
-      gli (= 2.16.0)
       rainbow
+      thor
 
 GEM
   remote: https://rubygems.org/
@@ -35,7 +35,6 @@ GEM
     ffi (1.9.18)
     football_ruby (0.1.2)
     gherkin (4.1.3)
-    gli (2.16.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
     rainbow (2.2.2)

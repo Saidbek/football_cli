@@ -2,7 +2,7 @@
   <img src="http://i.imgur.com/FLITgqs.jpg">
 </p>
 
-# Fottball CLI
+# Football CLI
 
 A command line interface for all the football data feeds in Ruby
 

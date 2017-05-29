@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    football_cli (0.0.6)
+    football_cli (1.0.0)
       football_ruby
       rainbow
       terminal-table

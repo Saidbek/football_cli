@@ -20,6 +20,8 @@ module FootballCli
     end
 
     def run
+      check_for_api_token
+
       if league
         league_table
       elsif team
@@ -58,7 +60,7 @@ module FootballCli
       team_response = client.team(team_id)
 
       output(
-        title: "#{team_response[:name]} players. Total #{response[:count]}",
+        title: "#{team_response[:name]} fixtures. Total #{response[:count]}",
         response: response[:fixtures],
         columns: %i(matchday homeTeamName goalsHomeTeam goalsAwayTeam awayTeamName status date)
       )
@@ -104,7 +106,13 @@ module FootballCli
     end
 
     def client
+      FootballRuby.api_token = Configuration.api_token
+
       @client ||= FootballRuby::Client.new
+    end
+
+    def check_for_api_token
+      raise Thor::Error ,"ERROR: You must config the api_token\nSOLUTION: Set up with `config api_token TOKEN`" if Configuration.api_token.to_s.empty?
     end
   end
 end

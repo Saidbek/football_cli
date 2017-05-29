@@ -1,0 +1,174 @@
+{
+  "_links": {
+    "self": {
+      "href": "http://api.football-data.org/v1/competitions/436/leagueTable/?matchday=38"
+    },
+    "competition": {
+      "href": "http://api.football-data.org/v1/competitions/436"
+    }
+  },
+  "leagueCaption": "Primera Division 2016/17",
+  "matchday": 38,
+  "standing": [
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/86"
+        }
+      },
+      "position": 1,
+      "teamName": "Real Madrid CF",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/de/3/3f/Real_Madrid_Logo.svg",
+      "playedGames": 37,
+      "points": 90,
+      "goals": 104,
+      "goalsAgainst": 41,
+      "goalDifference": 63,
+      "wins": 28,
+      "draws": 6,
+      "losses": 3,
+      "home": {
+        "goals": 48,
+        "goalsAgainst": 20,
+        "wins": 14,
+        "draws": 4,
+        "losses": 1
+      },
+      "away": {
+        "goals": 56,
+        "goalsAgainst": 21,
+        "wins": 14,
+        "draws": 2,
+        "losses": 2
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/81"
+        }
+      },
+      "position": 2,
+      "teamName": "FC Barcelona",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/de/a/aa/Fc_barcelona.svg",
+      "playedGames": 37,
+      "points": 87,
+      "goals": 112,
+      "goalsAgainst": 35,
+      "goalDifference": 77,
+      "wins": 27,
+      "draws": 6,
+      "losses": 4,
+      "home": {
+        "goals": 60,
+        "goalsAgainst": 15,
+        "wins": 14,
+        "draws": 3,
+        "losses": 1
+      },
+      "away": {
+        "goals": 52,
+        "goalsAgainst": 20,
+        "wins": 13,
+        "draws": 3,
+        "losses": 3
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/78"
+        }
+      },
+      "position": 3,
+      "teamName": "Club Atlético de Madrid",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/de/c/c1/Atletico_Madrid_logo.svg",
+      "playedGames": 37,
+      "points": 75,
+      "goals": 67,
+      "goalsAgainst": 26,
+      "goalDifference": 41,
+      "wins": 22,
+      "draws": 9,
+      "losses": 6,
+      "home": {
+        "goals": 37,
+        "goalsAgainst": 13,
+        "wins": 13,
+        "draws": 2,
+        "losses": 3
+      },
+      "away": {
+        "goals": 30,
+        "goalsAgainst": 13,
+        "wins": 9,
+        "draws": 7,
+        "losses": 3
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/559"
+        }
+      },
+      "position": 4,
+      "teamName": "Sevilla FC",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/en/8/86/Sevilla_cf_200px.png",
+      "playedGames": 38,
+      "points": 72,
+      "goals": 69,
+      "goalsAgainst": 49,
+      "goalDifference": 20,
+      "wins": 21,
+      "draws": 9,
+      "losses": 8,
+      "home": {
+        "goals": 39,
+        "goalsAgainst": 16,
+        "wins": 14,
+        "draws": 4,
+        "losses": 1
+      },
+      "away": {
+        "goals": 30,
+        "goalsAgainst": 33,
+        "wins": 7,
+        "draws": 5,
+        "losses": 7
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/94"
+        }
+      },
+      "position": 5,
+      "teamName": "Villarreal CF",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/de/7/70/Villarreal_CF_logo.svg",
+      "playedGames": 38,
+      "points": 67,
+      "goals": 55,
+      "goalsAgainst": 33,
+      "goalDifference": 22,
+      "wins": 19,
+      "draws": 10,
+      "losses": 9,
+      "home": {
+        "goals": 35,
+        "goalsAgainst": 18,
+        "wins": 11,
+        "draws": 4,
+        "losses": 4
+      },
+      "away": {
+        "goals": 20,
+        "goalsAgainst": 15,
+        "wins": 8,
+        "draws": 6,
+        "losses": 5
+      }
+    }
+  ]
+}

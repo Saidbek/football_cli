@@ -1,0 +1,174 @@
+{
+  "_links": {
+    "self": {
+      "href": "http://api.football-data.org/v1/competitions/436/leagueTable/?matchday=1"
+    },
+    "competition": {
+      "href": "http://api.football-data.org/v1/competitions/436"
+    }
+  },
+  "leagueCaption": "Primera Division 2016/17",
+  "matchday": 1,
+  "standing": [
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/81"
+        }
+      },
+      "position": 1,
+      "teamName": "FC Barcelona",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/de/a/aa/Fc_barcelona.svg",
+      "playedGames": 1,
+      "points": 3,
+      "goals": 6,
+      "goalsAgainst": 2,
+      "goalDifference": 4,
+      "wins": 1,
+      "draws": 0,
+      "losses": 0,
+      "home": {
+        "goals": 6,
+        "goalsAgainst": 2,
+        "wins": 1,
+        "draws": 0,
+        "losses": 0
+      },
+      "away": {
+        "goals": 0,
+        "goalsAgainst": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/86"
+        }
+      },
+      "position": 2,
+      "teamName": "Real Madrid CF",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/de/3/3f/Real_Madrid_Logo.svg",
+      "playedGames": 1,
+      "points": 3,
+      "goals": 3,
+      "goalsAgainst": 0,
+      "goalDifference": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 0,
+      "home": {
+        "goals": 0,
+        "goalsAgainst": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "away": {
+        "goals": 3,
+        "goalsAgainst": 0,
+        "wins": 1,
+        "draws": 0,
+        "losses": 0
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/559"
+        }
+      },
+      "position": 3,
+      "teamName": "Sevilla FC",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/en/8/86/Sevilla_cf_200px.png",
+      "playedGames": 1,
+      "points": 3,
+      "goals": 6,
+      "goalsAgainst": 4,
+      "goalDifference": 2,
+      "wins": 1,
+      "draws": 0,
+      "losses": 0,
+      "home": {
+        "goals": 6,
+        "goalsAgainst": 4,
+        "wins": 1,
+        "draws": 0,
+        "losses": 0
+      },
+      "away": {
+        "goals": 0,
+        "goalsAgainst": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/275"
+        }
+      },
+      "position": 4,
+      "teamName": "UD Las Palmas",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/en/2/20/UD_Las_Palmas_logo.svg",
+      "playedGames": 1,
+      "points": 3,
+      "goals": 4,
+      "goalsAgainst": 2,
+      "goalDifference": 2,
+      "wins": 1,
+      "draws": 0,
+      "losses": 0,
+      "home": {
+        "goals": 0,
+        "goalsAgainst": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "away": {
+        "goals": 4,
+        "goalsAgainst": 2,
+        "wins": 1,
+        "draws": 0,
+        "losses": 0
+      }
+    },
+    {
+      "_links": {
+        "team": {
+          "href": "http://api.football-data.org/v1/teams/560"
+        }
+      },
+      "position": 5,
+      "teamName": "RC Deportivo La Coruna",
+      "crestURI": "http://upload.wikimedia.org/wikipedia/en/4/4e/RC_Deportivo_La_Coruña_logo.svg",
+      "playedGames": 1,
+      "points": 3,
+      "goals": 2,
+      "goalsAgainst": 1,
+      "goalDifference": 1,
+      "wins": 1,
+      "draws": 0,
+      "losses": 0,
+      "home": {
+        "goals": 2,
+        "goalsAgainst": 1,
+        "wins": 1,
+        "draws": 0,
+        "losses": 0
+      },
+      "away": {
+        "goals": 0,
+        "goalsAgainst": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      }
+    }
+  ]
+}

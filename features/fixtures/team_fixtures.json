@@ -1,0 +1,159 @@
+{
+  "_links": {
+    "self": {
+      "href": "http://api.football-data.org/v1/teams/81/fixtures"
+    },
+    "team": {
+      "href": "http://api.football-data.org/v1/teams/81"
+    }
+  },
+  "count": 48,
+  "fixtures": [
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/154037"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/436"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/81"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/90"
+        }
+      },
+      "date": "2016-08-20T16:15:00Z",
+      "status": "FINISHED",
+      "matchday": 1,
+      "homeTeamName": "FC Barcelona",
+      "awayTeamName": "Real Betis",
+      "result": {
+        "goalsHomeTeam": 6,
+        "goalsAwayTeam": 2,
+        "halfTime": {
+          "goalsHomeTeam": 3,
+          "goalsAwayTeam": 1
+        }
+      },
+      "odds": {
+        "homeWin": 1.08,
+        "draw": 10,
+        "awayWin": 34
+      }
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/154026"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/436"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/77"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/81"
+        }
+      },
+      "date": "2016-08-28T18:15:00Z",
+      "status": "FINISHED",
+      "matchday": 2,
+      "homeTeamName": "Athletic Club",
+      "awayTeamName": "FC Barcelona",
+      "result": {
+        "goalsHomeTeam": 0,
+        "goalsAwayTeam": 1
+      },
+      "odds": {
+        "homeWin": 6,
+        "draw": 4.2,
+        "awayWin": 1.5
+      }
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/154016"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/436"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/81"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/263"
+        }
+      },
+      "date": "2016-09-10T18:30:00Z",
+      "status": "FINISHED",
+      "matchday": 3,
+      "homeTeamName": "FC Barcelona",
+      "awayTeamName": "Deportivo Alavés",
+      "result": {
+        "goalsHomeTeam": 1,
+        "goalsAwayTeam": 2
+      },
+      "odds": {
+        "homeWin": 1.08,
+        "draw": 15,
+        "awayWin": 34
+      }
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/155245"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/440"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/81"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/732"
+        }
+      },
+      "date": "2016-09-13T18:45:00Z",
+      "status": "FINISHED",
+      "matchday": 1,
+      "homeTeamName": "FC Barcelona",
+      "awayTeamName": "Celtic FC",
+      "result": {
+        "goalsHomeTeam": 7,
+        "goalsAwayTeam": 0
+      },
+      "odds": null
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "http://api.football-data.org/v1/fixtures/154012"
+        },
+        "competition": {
+          "href": "http://api.football-data.org/v1/competitions/436"
+        },
+        "homeTeam": {
+          "href": "http://api.football-data.org/v1/teams/745"
+        },
+        "awayTeam": {
+          "href": "http://api.football-data.org/v1/teams/81"
+        }
+      },
+      "date": "2016-09-17T11:00:00Z",
+      "status": "FINISHED",
+      "matchday": 4,
+      "homeTeamName": "CD Leganes",
+      "awayTeamName": "FC Barcelona",
+      "result": {
+        "goalsHomeTeam": 1,
+        "goalsAwayTeam": 5
+      },
+      "odds": null
+    }
+  ]
+}

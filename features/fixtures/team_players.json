@@ -1,0 +1,58 @@
+{
+  "_links": {
+    "self": {
+      "href": "http://api.football-data.org/v1/teams/81/players"
+    },
+    "team": {
+      "href": "http://api.football-data.org/v1/teams/81"
+    }
+  },
+  "count": 22,
+  "players": [
+    {
+      "name": "Rafinha",
+      "position": "Central Midfield",
+      "jerseyNumber": 12,
+      "dateOfBirth": "1993-02-12",
+      "nationality": "Brazil",
+      "contractUntil": "2020-06-30",
+      "marketValue": null
+    },
+    {
+      "name": "Marc-André ter Stegen",
+      "position": "Keeper",
+      "jerseyNumber": 1,
+      "dateOfBirth": "1992-04-30",
+      "nationality": "Germany",
+      "contractUntil": "2019-06-30",
+      "marketValue": null
+    },
+    {
+      "name": "Jasper Cillessen",
+      "position": "Keeper",
+      "jerseyNumber": 13,
+      "dateOfBirth": "1989-04-22",
+      "nationality": "Netherlands",
+      "contractUntil": "2021-06-30",
+      "marketValue": null
+    },
+    {
+      "name": "Jordi Masip",
+      "position": "Keeper",
+      "jerseyNumber": 25,
+      "dateOfBirth": "1989-01-03",
+      "nationality": "Spain",
+      "contractUntil": "2017-06-30",
+      "marketValue": null
+    },
+    {
+      "name": "Gerard Piqué",
+      "position": "Centre-Back",
+      "jerseyNumber": 3,
+      "dateOfBirth": "1987-02-02",
+      "nationality": "Spain",
+      "contractUntil": "2019-06-30",
+      "marketValue": null
+    }
+  ]
+}

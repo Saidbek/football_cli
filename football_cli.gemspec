@@ -22,11 +22,12 @@ Gem::Specification.new do |spec|
   spec.executables << 'football_cli'
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'thor'
-  spec.add_dependency 'football_ruby'
-  spec.add_dependency 'rainbow'
+  spec.add_runtime_dependency 'thor'
+  spec.add_runtime_dependency 'football_ruby'
+  spec.add_runtime_dependency 'rainbow'
+  spec.add_runtime_dependency 'terminal-table'
 
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'aruba'
-  spec.add_development_dependency 'terminal-table'
+  spec.add_development_dependency 'webmock'
 end

@@ -1,0 +1,9 @@
+{
+  "games": [
+    { "league": "Premier League", "goalsAwayTeam": 0, "time": "6'", "homeTeamName": "Arsenal", "awayTeamName": "Everton", "goalsHomeTeam": 0 },
+    { "league": "Premier League", "goalsAwayTeam": 0, "time": "4'", "homeTeamName": "Burnley", "awayTeamName": "West Ham United", "goalsHomeTeam": 0 },
+    { "league": "Premier League", "goalsAwayTeam": 1, "time": "4'", "homeTeamName": "Chelsea", "awayTeamName": "Sunderland", "goalsHomeTeam": 0 },
+    { "league": "Premier League", "goalsAwayTeam": 0, "time": "6'", "homeTeamName": "Hull City", "awayTeamName": "Tottenham Hotspur", "goalsHomeTeam": 0 },
+    { "league": "Premier League", "goalsAwayTeam": 1, "time": "6'", "homeTeamName": "Leicester City", "awayTeamName": "AFC Bournemouth", "goalsHomeTeam": 0 }
+  ]
+}

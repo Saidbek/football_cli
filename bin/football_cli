@@ -1,4 +1,10 @@
-#!/usr/bin/env ruby
-require 'football_cli'
+#!/usr/bin/env ruby -U
 
-FootballCli::CLI.start( ARGV )
+Signal.trap('INT') { abort }
+
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'football_cli/runner'
+FootballCli::Runner.new(ARGV.dup).execute!
+

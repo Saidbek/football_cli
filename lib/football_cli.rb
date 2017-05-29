@@ -1,2 +1,6 @@
-require 'football_cli/version'
+require 'thor'
+require 'football_cli/configuration'
+require 'football_cli/config'
 require 'football_cli/cli'
+require 'football_cli/handler'
+require 'football_cli/version'

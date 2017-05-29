@@ -9,6 +9,14 @@ A command line interface for all the football data feeds in Ruby
 ## Installation
 
     $ gem install football_cli
+    
+## Configuration
+
+To use this gem you have to have an account at [football-data.org](http://football-data.org/client/register). Then, execute the following command in your terminal:
+
+```ruby
+$ football_cli config api_token <API-TOKEN>
+```
 
 ## Usage
 
@@ -53,10 +61,11 @@ A command line interface for all the football data feeds in Ruby
   <img src="http://i.imgur.com/102utJf.png">
 </p>
 
-## Todo
+## Help
 
-1. Make api_token configurable
-2. Improve error handling
-3. Add more cucumber features
-4. And more ...
+To get more help about usage, execute the following command in your terminal:
+
+```ruby
+$ football_cli help
+```
 

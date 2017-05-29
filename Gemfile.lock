@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    football_cli (1.0.0)
+    football_cli (1.0.1)
       football_ruby
       rainbow
       terminal-table
@@ -38,7 +38,7 @@ GEM
     cucumber-wire (0.0.1)
     diff-lcs (1.3)
     ffi (1.9.18)
-    football_ruby (0.1.2)
+    football_ruby (0.1.3)
     gherkin (4.1.3)
     hashdiff (0.3.4)
     multi_json (1.12.1)

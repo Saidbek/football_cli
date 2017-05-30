@@ -2,6 +2,7 @@
   <img src="http://i.imgur.com/FLITgqs.jpg">
 </p>
 
+![Travis Master](https://travis-ci.org/Saidbek/football_cli.svg?branch=master)
 # Football CLI
 
 A command line interface for all the football data feeds in Ruby
